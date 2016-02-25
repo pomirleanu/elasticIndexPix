@@ -13,9 +13,9 @@
     "phpspec/phpspec": "~2.1"
   },
   "autoload": {
-    "classmap": [
-      "database"
-    ]
+    "psr-4": {
+      "Pomirleanu\\ElasticIndexPix\\": "src"
+    }
   },
   "license": "MIT",
   "authors": [
