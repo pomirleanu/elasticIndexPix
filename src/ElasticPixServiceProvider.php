@@ -34,19 +34,6 @@ class ElasticPixServiceProvider extends ServiceProvider
     }
 
     /**
-     * Define the routes for the application.
-     *
-     * @param  \Illuminate\Routing\Router $router
-     * @return void
-     */
-    public function setupRoutes(Router $router)
-    {
-        $router->group(['namespace' => 'pomirleanu\elasticIndexPix\Http\Controllers'], function ($router) {
-            require __DIR__ . '/Http/routes.php';
-        });
-    }
-
-    /**
      * Register the service provider.
      */
     public function register()
@@ -62,10 +49,6 @@ class ElasticPixServiceProvider extends ServiceProvider
 
             return $client;
         });
-    }
-    private function setupControllers()
-    {
-        $this->app->make('Pomirleanu\ElasticIndexPix\Http\Controllers\ElasticController');
     }
 
     /**
