@@ -26,7 +26,6 @@ class ElasticPixServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadViewsFrom(realpath(__DIR__ . '/../views'), 'index');
-        $this->setupControllers();
         $this->publishes([
             __DIR__ . '/config/elastic-pix.php' => config_path('elastic-pix.php'),
         ]);
