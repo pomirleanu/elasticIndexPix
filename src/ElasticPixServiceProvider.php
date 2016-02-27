@@ -38,11 +38,13 @@ class ElasticPixServiceProvider extends ServiceProvider
     {
         $this->app->bind(Client::class, function () {
             $conf = $this->app['config']->get('elastic-pix');
-            $logger = ClientBuilder::defaultLogger($conf['logPath'], $conf['logLevel']);
             $clientBuilder = ClientBuilder::create();
             $clientBuilder->setHosts($conf['hosts']);
             $clientBuilder->setRetries($conf['retries']);
-            $clientBuilder->setLogger($logger);
+            if($conf['logEnable']){
+                $logger = ClientBuilder::defaultLogger($conf['logPath'], $conf['logLevel']);
+                $clientBuilder->setLogger($logger);
+            }
             $client = $clientBuilder->build();
 
             return $client;

@@ -5,7 +5,7 @@
  * Time: 7:17 PM
  */
 
-namespace ElasticIndexPix\Contracts;
+namespace Pomirleanu\ElasticIndexPix\Contracts;
 
 
 interface Search

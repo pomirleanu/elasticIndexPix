@@ -1,5 +1,5 @@
 <?php
-namespace ElasticIndexPix\Contracts;
+namespace Pomirleanu\ElasticIndexPix\Contracts;
 /**
  * User: pomir
  * Date: 2/24/2016

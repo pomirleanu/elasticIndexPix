@@ -5,8 +5,6 @@
  * Time: 5:38 PM
  */
 
-use Elasticsearch\ClientBuilder;
-
 return
     [
         /*
@@ -30,10 +28,15 @@ return
          */
         'retries' => 3,
 
+        /**
+         * Log can be enable or false
+         */
+        'logEnable' => false,
+
         /*
          * Specify the path where Elasticsearch will write it's logs.
          */
-        'logPath' => storage_path() . DIRECTORY_SEPARATOR.'logs'.DIRECTORY_SEPARATOR.'elasticsearch.log',
+        'logPath' => storage_path() . DIRECTORY_SEPARATOR . 'logs' . DIRECTORY_SEPARATOR . 'elasticsearch.log',
 
         /*
          * Specify how verbose the logging must be
