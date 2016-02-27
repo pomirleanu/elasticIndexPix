@@ -1,12 +1,9 @@
 <?php
 namespace Pomirleanu\ElasticIndexPix;
 
-use Elasticsearch\Client;
 use Elasticsearch\ClientBuilder;
-use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Pomirleanu\ElasticIndexPix\Repo;
-use Pomirleanu\ElasticIndexPix\Repo\ElasticPix;
 
 /**
  * User: pomir
@@ -21,11 +18,10 @@ class ElasticPixServiceProvider extends ServiceProvider
      *
      * @var bool
      */
-    protected $defer = false;
+    protected $defer = true;
 
     public function boot()
     {
-        $this->loadViewsFrom(realpath(__DIR__ . '/../views'), 'index');
         $this->publishes([
             __DIR__ . '/config/elastic-pix.php' => config_path('elastic-pix.php'),
         ]);
@@ -36,18 +32,20 @@ class ElasticPixServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(Client::class, function () {
+        $this->app->singleton('elasticPix', function ($app) {
             $conf = $this->app['config']->get('elastic-pix');
             $clientBuilder = ClientBuilder::create();
             $clientBuilder->setHosts($conf['hosts']);
-            $clientBuilder->setRetries($conf['retries']);
+//            $clientBuilder->setRetries(2);
             if($conf['logEnable']){
                 $logger = ClientBuilder::defaultLogger($conf['logPath'], $conf['logLevel']);
                 $clientBuilder->setLogger($logger);
             }
             $client = $clientBuilder->build();
 
-            return $client;
+            $searchHandler = new ElasticPixHandler($client);
+
+            return $searchHandler;
         });
     }
 
