@@ -10,7 +10,7 @@ use Pomirleanu\ElasticIndexPix\Repo;
  * Date: 2/24/2016
  * Time: 5:31 PM
  */
-class ElasticPixServiceProvider extends BaseServiceProvider
+class ElasticPixServiceProvider extends ServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.
