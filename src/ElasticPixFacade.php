@@ -1,5 +1,5 @@
 <?php
-namespace Pomirleanu\ElasticIndexPix\Facades;
+namespace Pomirleanu\ElasticIndexPix;
 
 /**
  * User: Pomirleanu
