@@ -5,6 +5,7 @@
   "require": {
     "php": ">=5.4",
     "laravel/framework": "5.*",
+    "illuminate/support": "~4|~5",
     "elasticsearch/elasticsearch": "^2.1",
     "monolog/monolog": "~1.0"
   },
